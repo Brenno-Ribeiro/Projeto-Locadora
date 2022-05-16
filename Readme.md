@@ -20,6 +20,9 @@ docker-compose build --no-cache
 ```bash
 docker-compose up
 ```
+## PRONTINHO, AGORA VOCÊ PODE ABRIR NESSE LOCAL
+[PROJETO LOCADORA RODANDO......](http://localhost:3000)
+
 
 
 
