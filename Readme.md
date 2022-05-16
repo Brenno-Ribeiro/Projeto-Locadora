@@ -6,7 +6,7 @@ Uma aplicação Full Stack que gerencia toda uma rotina de filmes de uma locador
 
 Você precisará ter o docker instalado em sua maquina
 
-## Executando o pojeto
+## Executando o projeto
 
 Faça o clone do repositório, e na pasta raiz do projeto (Projeto Locadora, aonde se encontra o arquivo docker-compose.yml) execute os seguintes comandos.
 
