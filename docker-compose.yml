@@ -1,0 +1,52 @@
+version: '3.4'
+
+networks:
+  projeto-locadora:
+    driver: bridge 
+
+volumes:
+  db_volume:
+    driver: local
+
+services:
+
+  movieapi:
+    image: movienetback
+    container_name: MOVIE-STORE-BACK-END
+    depends_on:
+      - "moviedb"
+    build:
+      context: ./Back-End/MovieStore
+      dockerfile: Dockerfile
+    ports:
+      - "5001:80"     
+    networks:
+      - projeto-locadora 
+  
+
+  moviedb:
+    image: postgres:latest
+    container_name: MOVIE-STORE-DATA-BASE
+    ports:
+      - "5432:5432"
+    restart: always
+    volumes:
+      - db_volume:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: "movieuser"
+      POSTGRES_PASSWORD: "movieuser"
+      POSTGRES_DB: "moviestore"
+    networks:
+      - projeto-locadora 
+
+
+  moviespa:
+    image: movievuefront
+    container_name: MOVIE-STORE-FRONT-END
+    build:
+      context: ./Front-End/MovieStore
+      dockerfile: Dockerfile
+    ports:
+      - "3000:8080"     
+    networks:
+      - projeto-locadora  
